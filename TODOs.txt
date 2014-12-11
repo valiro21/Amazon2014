@@ -1,0 +1,4 @@
+TODO:
+* simulare
+* diferenta dintre culori - (red0 - red1) + (albastru0 - albastru1)
+* diferenta dintre culori - [(red0 - red1), (albastru0 - albastru1)]
