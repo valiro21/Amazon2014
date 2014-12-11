@@ -4,7 +4,7 @@
 using namespace std;
 
 
-//pana la urma pot fi maxim 5 culori asa ca fac fara map
+//pana la urma pot fi maxim 5 culori asa ca facem fara map
 
 
 
@@ -20,7 +20,6 @@ struct Color {
 
 //clasa Colors - Indicii culorilor incep de la 0
 class Colors {
-
   private:
         vector<Color> colors;
 

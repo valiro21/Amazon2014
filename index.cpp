@@ -1,4 +1,5 @@
 #include <fstream>
+#include <vector>
 #include <cstdio>
 #include <string.h>
 #include <stdlib.h>
@@ -19,6 +20,10 @@ void read_chunk();
 void read_bugs();
 void read_harta();
 void solve();
+
+//vectorul de inamici
+vector<Bug> bugs;
+
 
 int main() {
   read();
@@ -54,55 +59,57 @@ void read_chunk() {
 }
 
 void read_bugs() {
-  char bug[10000];
+    char bug[10000];
 
-  while (true) {
-    fin.getline(bug, 5000);
+    while (true) {
+        fin.getline(bug, 5000);
 
-    if (bug[0] == '\0') { break; }
-    ++no_bugs;
-    char *p;
-    p = strtok(bug, " ");
+        if (bug[0] == '\0') { break; }
+        ++no_bugs;
+        char *p;
+        p = strtok(bug, " ");
 
-    Bug currentBug(p);
+        Bug currentBug(p);
 
-    for (p = strtok(NULL, " "); p != NULL; p = strtok(NULL, " ") )  {
-      char *value_s = strchr(p, '=');
-      ++value_s;
-      int value = atoi(value_s);
+        for (p = strtok(NULL, " "); p != NULL; p = strtok(NULL, " ") )  {
+            char *value_s = strchr(p, '=');
+            ++value_s;
+            int value = atoi(value_s);
 
-      if (strstr(p, "frame=")) {
-        currentBug.frame = value;
-      } else {
-        char color[1000], *aux2;
-        strcpy(color, p);
+            if (strstr(p, "frame=")) {
+                currentBug.frame = value;
+            } else {
+                char color[1000], *aux2;
+                strcpy(color, p);
 
-        aux2 = strchr(color, '=');
-        *aux2 = '\0';
+                aux2 = strchr(color, '=');
+                *aux2 = '\0';
 
-        currentBug.setColor(color, value);
-      }
+                currentBug.setColor(color, value);
+            }
+        }
+
+        bugs.push_back (currentBug);
     }
-  }
 }
 
 void read_harta() {
-  char line[10000];
-  while (true) {
-    fin.getline(line, 5000);
+    char line[10000];
+    while (true) {
+        fin.getline(line, 5000);
 
-    if (line[0] == '\0') { break; }
+        if (line[0] == '\0') { break; }
 
-    char *value;
-    value = strtok(line, " ");
-    ++hartaN;
-    hartaM = 0;
-    for (; value != NULL; value = strtok(NULL, " ")) {
-      ++hartaM;
-      harta[hartaN][hartaM] = (char)*value;
+        char *value;
+        value = strtok(line, " ");
+        ++hartaN;
+        hartaM = 0;
+        for (; value != NULL; value = strtok(NULL, " ")) {
+            ++hartaM;
+            harta[hartaN][hartaM] = (char)*value;
+        }
     }
-  }
 }
 
-void solve() {
+void solve () {
 }
