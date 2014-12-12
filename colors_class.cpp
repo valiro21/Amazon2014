@@ -24,39 +24,39 @@ class Colors {
         vector<Color> colors;
 
   public:
-    void setColor(string ColorName, int value);
-    int getColor(string ColorName);
+    void setColor(string _color, int _value);
+    int getColor(string _color);
 
-    void setColor(int ColorName, int value);
-    int getColor(int ColorName);
+    void setColor(int _color, int _value);
+    int getColor(int _color);
 };
 
-void Colors::setColor(string ColorName, int value) {
+void Colors::setColor(string _color, int _value) {
     for (int i = 0; i < colors.size (); i++)
-        if (colors[i].name == ColorName) {
-            colors[i].value = value;
+        if (colors[i].name == _color) {
+            colors[i].value = _value;
             return;
         }
 
-   Color x(ColorName, value);
+   Color x(_color, _value);
    colors.push_back (x);
 }
 
-int Colors::getColor(string ColorName) {
+int Colors::getColor(string _color) {
     for (int i = 0; i < colors.size (); i++)
-        if (colors[i].name == ColorName)
+        if (colors[i].name == _color)
             return colors[i].value;
     return 0;
 }
 
 
-void Colors::setColor(int Color, int value) {
-    if (Color < colors.size ())
-        colors[Color].value = value;
+void Colors::setColor(int _color, int _value) {
+    if (_color < colors.size ())
+        colors[_color].value = _value;
 }
 
-int Colors::getColor(int Color) {
-    if (Color < colors.size ())
-        return colors[Color].value;
+int Colors::getColor(int _color) {
+    if (_color < colors.size ())
+        return colors[_color].value;
     return 0;
 }

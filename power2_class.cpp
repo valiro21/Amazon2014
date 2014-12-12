@@ -5,6 +5,7 @@ using namespace std;
 class power2 {
 private:
     vector<int> bits;
+    int value;
 public:
     power2 () {
         bits.push_back (0);
@@ -17,13 +18,13 @@ public:
         }
     }
 
-    int operator[](int index) {
-        if (index<bits.size ())
-            return bits[index];
+    int operator[](int _index) {
+        if (_index<bits.size ())
+            return bits[_index];
         return 0;
     }
 
-    void ponderate () {
+    void ponderate (vector<int> _back) {
 
     }
 };

@@ -8,8 +8,8 @@ class Bug : public Colors {
   string name;
 
   public:
-  Bug(string name) {
-    this -> name = name;
+  Bug(string _name) {
+    name = _name;
   }
 
   int frame;
@@ -17,6 +17,6 @@ class Bug : public Colors {
 };
 
 const char* Bug::getName() {
-  return this -> name.c_str();
+  return name.c_str();
 }
 

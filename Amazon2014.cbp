@@ -32,7 +32,8 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="main.cpp" />
+		<Unit filename="index.cpp" />
+		<Unit filename="power2_class.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
