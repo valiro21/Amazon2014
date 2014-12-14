@@ -1,6 +1,8 @@
 #include <string>
 #include "colors_class.cpp"
 
+#define bugs_type vector <Bug>
+
 using namespace std;
 
 class Bug : public Colors {

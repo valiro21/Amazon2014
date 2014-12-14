@@ -2,6 +2,8 @@
 #include <vector>
 #include <string>
 
+#define towers_type vector <Tower>
+
 using namespace std;
 
 struct action { int frame; string bugName; };
