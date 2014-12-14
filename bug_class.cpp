@@ -15,10 +15,18 @@ class Bug : public Colors {
   }
 
   int frame;
-  const char* getName();
+  string getName();
+  bool isDead();
 };
 
-const char* Bug::getName() {
-  return name.c_str();
+string Bug::getName() {
+  return name;
 }
 
+bool Bug::isDead() {
+  for (colors_type::iterator color = colors.begin(); color != colors.end(); ++color) {
+    if (color->second > 0) {
+      return false;
+    }
+  }
+}

@@ -1,62 +1,40 @@
 #include <string>
-#include <vector>
+#include <map>
+
+#define colors_type map <string, int>
+
 
 using namespace std;
 
-
-//pana la urma pot fi maxim 5 culori asa ca facem fara map
-
-
-
-struct Color {
-    string name;
-    int value;
-
-    Color(string name, int value) {
-        this->name = name;
-        this->value = value;
-    }
-};
-
-//clasa Colors - Indicii culorilor incep de la 0
 class Colors {
-  private:
-        vector<Color> colors;
-
   public:
+    colors_type colors;
+
     void setColor(string _color, int _value);
     int getColor(string _color);
-
-    void setColor(int _color, int _value);
-    int getColor(int _color);
+    int substractColors(colors_type variabila);
 };
 
 void Colors::setColor(string _color, int _value) {
-    for (int i = 0; i < colors.size (); i++)
-        if (colors[i].name == _color) {
-            colors[i].value = _value;
-            return;
-        }
-
-   Color x(_color, _value);
-   colors.push_back (x);
+  colors[_color] = _value;
 }
 
 int Colors::getColor(string _color) {
-    for (int i = 0; i < colors.size (); i++)
-        if (colors[i].name == _color)
-            return colors[i].value;
-    return 0;
+    return colors[_color];
+}
+
+int Colors::substractColors(colors_type scazator) {
+  int diff = 0;
+
+  for(colors_type::iterator color=colors.begin(); color != colors.end(); ++color) {
+    int v1 = color->second;
+    int v2 = scazator[color->first];
+
+    if (v1-v2 < 0) diff += v2-v1;
+    color->second -= v2;
+  }
+
+  return diff;
 }
 
 
-void Colors::setColor(int _color, int _value) {
-    if (_color < colors.size ())
-        colors[_color].value = _value;
-}
-
-int Colors::getColor(int _color) {
-    if (_color < colors.size ())
-        return colors[_color].value;
-    return 0;
-}
